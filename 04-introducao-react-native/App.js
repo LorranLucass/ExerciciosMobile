@@ -1,60 +1,55 @@
 //Imports
 import { StatusBar } from 'expo-status-bar';
-import { Button, StyleSheet, Text, View, Image, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, Button, Image, ScrollView } from 'react-native';
 
 //Componente Principal
-//Ele deve retorna o que será renderizado na tela (Template feito com JSX)
+//Ele deve retornar oque será retornado na tela (template feito com JSX)
 export default function App() {
- //Lógica do meu componente
-const nome = "Victor"
+//Lógica ao meu componente 
+
+const nome = "Lorran"
 
 function alerta() {
-  alert("Você é Besta")
+  alert ("Você clicou no butão")
 }
- 
-
-
-
-//Retorno com JSX     
+<ScrollView>
+// Retorno com JSX
   return (
-    <ScrollView>
     <View style={styles.container}>
-      {/*Comentario dentro do Template JSX */}
-      {/* Codigo javascript */}
-      <StatusBar style="auto" />
-      <Text>{2 + 2}</Text>
-      <Text>{nome}</Text>
-      <Text>App do Victor!</Text>
+      {/* Comentario com control  + ; */}
+      {/* Codigo JavaScript */}
+     <StatusBar style="auto" />
+     <Text>Meu Aplicativo RODANDOOOOO!!!</Text>
+     <Text> {2 + 2}</Text>
+     <Text>{nome}</Text>
 
-      <Button title='Enviar' onPress={alerta}> </Button>
+     <Button title='Alterar' onPress={alerta}></Button>
 
-      <Image
-        source={{ uri: "https://media1.tenor.com/m/o8EC-5TTaogAAAAd/macaco-olhando.gif"}} 
-        style={{
-          height: 300,
-          width: 300  
-        }}
-        />
+    <Image 
+      source={{uri: 'https://i.pinimg.com/originals/12/22/77/1222772e2bcfa3ddf2b4d62566b0905b.gif'}}
+      style={{
+        height: 300,
+        width: 300
+      }}
+    />
 
-      <Image
-        source={require('./Imagens/image.png')} 
-        style={{
-          height: 300,
-          width: 300
-        }}
-        />
-
+    <Image source={require('./images/image.png')}
+    style={{
+      height: 300,
+      width: 300
+    }}
+    />
     </View>
-    </ScrollView>
   );
+    </ScrollView>
 }
+
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'green',
+    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-
   },
 });
