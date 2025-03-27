@@ -5,12 +5,13 @@ import PrimeiroComponente from './componentes/PrimeiroComponente';
 import JavascriptComponente from './componentes/JavascriptComponente';
 import ListaComponente from './componentes/ListaComponente';
 import Perfil from './componentes/Perfil'
+import Atleta from './componentes/Atleta';
 
 export default function App() {
   return (
     <View style={styles.container}>
-    
-      <PrimeiroComponente />
+      <Atleta />
+      {/* <PrimeiroComponente />
       <JavascriptComponente />
       <ListaComponente />
       <Perfil
@@ -22,7 +23,7 @@ export default function App() {
         nome= "Giovanna"  
         sobrenome= "Martins"
         idade= {22}
-      /> 
+      />  */}
 
     
 

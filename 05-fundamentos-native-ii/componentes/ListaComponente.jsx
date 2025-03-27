@@ -25,9 +25,6 @@ export default function ListaComponente() {
   )
 }
 
-
-
-
 const styles = StyleSheet.create({
     container: {
         backgroundColor: "red",
