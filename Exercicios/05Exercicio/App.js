@@ -1,14 +1,15 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image, ScrollView } from 'react-native';
 
-// Componente Filme
-const Filme = ({ nome, ano, diretor, tipo, imagem }) => {
+// Componente Item (Filme ou Série)
+const Item = ({ nome, ano, diretor, tipo, imagem, temporadas }) => {
   return (
     <View style={styles.card}>
       <Image source={{ uri: imagem }} style={styles.imagem} />
       <Text style={styles.titulo}>{nome} ({ano})</Text>
       <Text style={styles.texto}>Diretor: {diretor}</Text>
-      <Text style={styles.texto}>Gênero: {tipo}</Text>
+      {tipo && <Text style={styles.texto}>Gênero: {tipo}</Text>}
+      {temporadas && <Text style={styles.texto}>Temporadas: {temporadas}</Text>}
     </View>
   );
 };
@@ -45,12 +46,36 @@ export default function App() {
     }
   ];
 
+  const listaSeries = [
+    {
+      nome: "Buffy, a Caça-Vampiros",
+      ano: 1997,
+      diretor: "Joss Whedon",
+      temporadas: 7,
+      capa: "https://upload.wikimedia.org/wikipedia/commons/d/d9/Buffy_the_vampire_slayer.svg"
+    },
+    {
+      nome: "Desperate Housewives",
+      ano: 2004,
+      diretor: "Marc Cherry",
+      temporadas: 8,
+      capa: "https://upload.wikimedia.org/wikipedia/commons/3/3a/Desperate_Housewives_Logo.svg"
+    },
+    {
+      nome: "Sons of Anarchy",
+      ano: 2008,
+      diretor: "Kurt Sutter",
+      temporadas: 7,
+      capa: "https://upload.wikimedia.org/wikipedia/pt/7/7b/SOATitlecard.jpg"
+    }
+  ];
+
   return (
     <View style={styles.container}>
-      <Text style={styles.header}>Lista de Filmes</Text>
       <ScrollView>
+        <Text style={styles.header}>🎬 Filmes</Text>
         {listaFilmes.map((filme, index) => (
-          <Filme
+          <Item
             key={index}
             nome={filme.nome}
             ano={filme.ano}
@@ -59,7 +84,20 @@ export default function App() {
             imagem={filme.capa}
           />
         ))}
+
+        <Text style={styles.header}>📺 Séries</Text>
+        {listaSeries.map((serie, index) => (
+          <Item
+            key={index}
+            nome={serie.nome}
+            ano={serie.ano}
+            diretor={serie.diretor}
+            temporadas={serie.temporadas}
+            imagem={serie.capa}
+          />
+        ))}
       </ScrollView>
+
       <StatusBar style="auto" />
     </View>
   );
@@ -74,9 +112,9 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   header: {
-    fontSize: 24,
+    fontSize: 22,
     fontWeight: 'bold',
-    marginBottom: 20
+    marginVertical: 10
   },
   card: {
     backgroundColor: '#fff',
@@ -88,11 +126,12 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     shadowRadius: 4,
     elevation: 5,
-    alignItems: 'center'
+    alignItems: 'center',
+    width: 300
   },
   imagem: {
-    width: 150,
-    height: 220,
+    width: 200,
+    height: 280,
     borderRadius: 10,
     marginBottom: 10
   },
