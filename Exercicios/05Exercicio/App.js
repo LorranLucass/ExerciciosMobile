@@ -52,7 +52,7 @@ export default function App() {
       ano: 1997,
       diretor: "Joss Whedon",
       temporadas: 7,
-      capa: "https://upload.wikimedia.org/wikipedia/commons/d/d9/Buffy_the_vampire_slayer.svg"
+      capa: "https://media.fstatic.com/tzySmw5lcp0Zfsfz4pmI6gdlSBA=/322x478/smart/filters:format(webp)/media/movies/covers/2012/07/8c97564608e7b75e8ed2c91cb605c2fc.jpg"
     },
     {
       nome: "Desperate Housewives",
