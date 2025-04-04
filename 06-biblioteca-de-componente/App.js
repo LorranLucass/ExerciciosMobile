@@ -1,45 +1,121 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { ScrollView, StyleSheet, View } from 'react-native';
-import { PaperProvider, Card, Title, Paragraph, Text, Button, Divider} from 'react-native-paper'
+import { FlatList, ScrollView, StyleSheet, View, } from 'react-native';
+import { PaperProvider, Card, Title, Paragraph, Text, Button, Divider } from 'react-native-paper'
 
 
 export default function App() {
+
+  const listaEstadosMunicipios = [
+    {
+      nome: 'Rio de Janeiro',
+      sigla: 'RJ',
+      imagem: 'https://picsum.photos/700',
+      descricao: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      municipios: [
+        {
+          nome: 'Rio de Janeiro',
+          imagem: 'https://picsum.photos/700'
+        },
+        {
+          nome: 'Niterói',
+          imagem: 'https://picsum.photos/700'
+        },
+        {
+          nome: 'Petrópolis',
+          imagem: 'https://picsum.photos/700'
+        },
+        {
+          nome: 'Angra dos Reis',
+          imagem: 'https://picsum.photos/700'
+        },
+        {
+          nome: 'Cabo Frio',
+          imagem: 'https://picsum.photos/700'
+        }
+      ]
+    },
+    {
+      nome: 'São Paulo',
+      sigla: 'SP',
+      imagem: 'https://picsum.photos/700',
+      descricao: 'São Paulo é o estado mais populoso do Brasil, com uma economia diversificada e forte.',
+      municipios: [
+        {
+          nome: 'São Paulo',
+          imagem: 'https://picsum.photos/700'
+        },
+        {
+          nome: 'Campinas',
+          imagem: 'https://picsum.photos/700'
+        },
+        {
+          nome: 'Santos',
+          imagem: 'https://picsum.photos/700'
+        },
+        {
+          nome: 'Sorocaba',
+          imagem: 'https://picsum.photos/700'
+        },
+        {
+          nome: 'Ribeirão Preto',
+          imagem: 'https://picsum.photos/700'
+        }
+      ]
+    },
+    {
+      nome: 'Minas Gerais',
+      sigla: 'MG',
+      imagem: 'https://picsum.photos/700',
+      descricao: 'Minas Gerais é conhecido por sua rica história, culinária e belas paisagens.',
+      municipios: [
+        {
+          nome: 'Belo Horizonte',
+          imagem: 'https://picsum.photos/700'
+        },
+        {
+          nome: 'Ouro Preto',
+          imagem: 'https://picsum.photos/700'
+        },
+        {
+          nome: 'Uberlândia',
+          imagem: 'https://picsum.photos/700'
+        },
+        {
+          nome: 'Juiz de Fora',
+          imagem: 'https://picsum.photos/700'
+        },
+        {
+          nome: 'Montes Claros',
+          imagem: 'https://picsum.photos/700'
+        }
+      ]
+    }
+  ]
+
+
   return (
     <PaperProvider>
+      <View style={styles.container}>
+        <StatusBar style="auto" />
 
-      <ScrollView>
-    <View style={styles.container}>
-      <StatusBar style="auto" />
+        <Text variant='displaySmall'>Lista de Estados</Text>
 
-      <Button mode='contained'>Clicar</Button>
-      <Button mode='contained-tonal'>Clicar</Button>
-      <Button mode='elevated'>Clicar</Button>
-      <Button mode='outlined'>Clicar</Button>
-
-    <Text variant='bodyLarge'>Um texto qualquer</Text>
-    <Divider bold={true}/>
-    <Text variant='bodyMedium'>Um texto qualquer</Text>
-    <Text variant='headlineLarge'>Um texto qualquer</Text>
-
-
-
+        <FlatList
+          data={listaEstadosMunicipios}
+          renderItem={({ item }) => (
+            <Estado
+              nome={item.nome}
+              sigla={item.sigla}
+              descricao={item.descricao}
+              imagem={item.imagem}
+              municipios={item.municipios}
+            />
+          )}
+        />
 
 
-      <Card style={{margin: 10}}>
-
-        <Card.Content>
-          <Title>
-            Um titulo qualquer
-          </Title>
-          <Paragraph> inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache 
-          if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and power
-          </Paragraph>
-        </Card.Content>
-      </Card>
-
-    </View>
-    </ScrollView>
+      </View>
     </PaperProvider>
   );
 }
@@ -50,5 +126,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+    paddingTop: 20
   },
 });
