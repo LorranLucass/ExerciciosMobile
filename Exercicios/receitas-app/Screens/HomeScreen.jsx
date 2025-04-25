@@ -2,7 +2,7 @@ import React from 'react';
 import { View, FlatList, StyleSheet, Image } from 'react-native';
 import { Card, Title, Button } from 'react-native-paper';
 
-// Dados das receitas (copiados do exemplo)
+
 const receitas = [
   {
     id: 1,
